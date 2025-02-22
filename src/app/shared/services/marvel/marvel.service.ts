@@ -4,9 +4,9 @@ import {
   MarvelApiResponse,
   MarvelCharacter,
   MarvelCharacterData,
-} from '@models/marvel-api-response.model';
-import { CharacterParams } from '@models/marvel-query-params.model';
-import { HashService } from '@services/hash/hash.service';
+} from '@shared/models/marvel-api-response.model';
+import { CharacterParams } from '@shared/models/marvel-query-params.model';
+import { HashService } from '@shared/services/hash/hash.service';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 @Injectable({
@@ -28,17 +28,20 @@ export class MarvelService {
       .pipe(map(({ data }) => data.results));
   }
 
-  generateParams(query: Record<string, any>) {
+  private generateParams(query: Record<string, any>): HttpParams {
     const ts = Date.now();
     const hash = this._hash.generateHash(ts);
-
+    const apikey = environment.MARVEL_PUBLIC_KEY;
     let params = new HttpParams();
 
     params = Object.keys(query).reduce((acc, key) => {
       return acc.append(key, query[key].toString());
     }, params);
 
-    params = params.append('ts', ts).append('hash', hash);
+    params = params
+      .append('ts', ts)
+      .append('hash', hash)
+      .append('apikey', apikey);
 
     return params;
   }

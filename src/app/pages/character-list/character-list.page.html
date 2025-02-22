@@ -1,0 +1,12 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Lista de personajes </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    @for (character of characters(); track $index) {
+    <app-character-item [character]="character" />
+    }
+  </ion-list>
+</ion-content>

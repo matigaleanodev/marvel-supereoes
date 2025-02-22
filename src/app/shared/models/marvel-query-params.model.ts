@@ -1,5 +1,7 @@
 export type CharacterParams = Partial<MarvelQueryParams>;
 
+export type ChallengeParam = Pick<MarvelQueryParams, 'limit'>;
+
 interface MarvelQueryParams {
   name: string;
   nameStartsWith: string;
