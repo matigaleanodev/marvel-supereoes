@@ -1,0 +1,7 @@
+{
+  "name": "marver-superheroes",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
