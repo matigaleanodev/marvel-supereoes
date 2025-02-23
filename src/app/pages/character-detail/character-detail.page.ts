@@ -1,4 +1,9 @@
-import { Component, computed, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -6,6 +11,15 @@ import {
   IonHeader,
   IonTitle,
   IonToolbar,
+  IonCard,
+  IonAvatar,
+  IonCardContent,
+  IonItem,
+  IonLabel,
+  IonBadge,
+  IonButtons,
+  IonBackButton,
+  NavController,
 } from '@ionic/angular/standalone';
 import { CharacterService } from '@shared/services/character/character.service';
 import { ActivatedRoute } from '@angular/router';
@@ -18,6 +32,14 @@ import { toSignal } from '@angular/core/rxjs-interop';
   styleUrls: ['./character-detail.page.scss'],
   standalone: true,
   imports: [
+    IonBackButton,
+    IonButtons,
+    IonBadge,
+    IonLabel,
+    IonItem,
+    IonCardContent,
+    IonAvatar,
+    IonCard,
     IonContent,
     IonHeader,
     IonTitle,
@@ -25,10 +47,12 @@ import { toSignal } from '@angular/core/rxjs-interop';
     CommonModule,
     FormsModule,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CharacterDetailPage {
   private readonly _character = inject(CharacterService);
   private readonly route = inject(ActivatedRoute);
+  private readonly _nav = inject(NavController);
 
   private readonly id = toSignal(
     this.route.paramMap.pipe(map((params) => params.get('id')))
@@ -42,10 +66,40 @@ export class CharacterDetailPage {
 
     const character = list.find((i) => i.id === Number(id));
 
+    if (!character) {
+      this._nav.navigateRoot('/not-found');
+    }
+
     return character;
   });
+
+  readonly name = computed(() => this.character()?.name);
 
   readonly comicCount = computed(() => this.character()?.comics.available);
   readonly seriesCount = computed(() => this.character()?.series.available);
   readonly storiesCount = computed(() => this.character()?.stories.available);
+
+  readonly thumbnail = computed(() => {
+    const char = this.character();
+    if (!char || !char.thumbnail) return '';
+
+    const { path, extension } = char.thumbnail;
+
+    return `${path}.${extension}`;
+  });
+
+  readonly characterDetails = computed(() => [
+    {
+      name: 'xComics',
+      count: this.comicCount(),
+    },
+    {
+      name: 'xSeries',
+      count: this.seriesCount(),
+    },
+    {
+      name: 'xStories',
+      count: this.storiesCount(),
+    },
+  ]);
 }
