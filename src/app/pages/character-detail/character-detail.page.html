@@ -18,8 +18,16 @@
   </ion-header>
   <ion-card>
     <ion-card-content>
+      @let image = thumbnail();
       <ion-avatar>
-        <img [src]="thumbnail()" [alt]="name()" />
+        <img
+          [src]="image"
+          [alt]="name()"
+          (load)="onLoadImage()"
+          [ngClass]="{ hidden: loadingImage() }"
+        />
+        @if (loadingImage()) {
+        <ion-skeleton-text [animated]="true" /> }
       </ion-avatar>
 
       @for (item of characterDetails(); track $index) {

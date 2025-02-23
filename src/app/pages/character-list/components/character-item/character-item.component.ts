@@ -24,8 +24,8 @@ export class CharacterItemComponent {
     if (!char || !char.thumbnail) return '';
 
     const { path, extension } = char.thumbnail;
-
-    return `${path}.${extension}`;
+    const securePath = path.replace('http://', 'https://');
+    return `${securePath}.${extension}`;
   });
 
   readonly name = computed(() => this.character()?.name);

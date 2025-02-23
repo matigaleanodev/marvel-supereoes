@@ -1,0 +1,15 @@
+ion-avatar {
+  --border-radius: 4px;
+  height: 250px;
+  width: 250px;
+  ion-skeleton-text {
+    height: 100%;
+    width: 100%;
+  }
+  img {
+    display: block;
+    &.hidden {
+      display: none;
+    }
+  }
+}

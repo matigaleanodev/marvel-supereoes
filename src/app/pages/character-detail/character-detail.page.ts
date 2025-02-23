@@ -3,8 +3,9 @@ import {
   Component,
   computed,
   inject,
+  signal,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
   IonContent,
@@ -20,6 +21,8 @@ import {
   IonButtons,
   IonBackButton,
   NavController,
+  IonSpinner,
+  IonSkeletonText,
 } from '@ionic/angular/standalone';
 import { CharacterService } from '@shared/services/character/character.service';
 import { ActivatedRoute } from '@angular/router';
@@ -32,6 +35,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
   styleUrls: ['./character-detail.page.scss'],
   standalone: true,
   imports: [
+    IonSkeletonText,
     IonBackButton,
     IonButtons,
     IonBadge,
@@ -46,6 +50,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
     IonToolbar,
     CommonModule,
     FormsModule,
+    NgClass,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -84,9 +89,12 @@ export class CharacterDetailPage {
     if (!char || !char.thumbnail) return '';
 
     const { path, extension } = char.thumbnail;
+    const securePath = path.replace('http://', 'https://');
 
-    return `${path}.${extension}`;
+    return `${securePath}/standard_fantastic.${extension}`;
   });
+
+  readonly loadingImage = signal(true);
 
   readonly characterDetails = computed(() => [
     {
@@ -102,4 +110,8 @@ export class CharacterDetailPage {
       count: this.storiesCount(),
     },
   ]);
+
+  onLoadImage() {
+    this.loadingImage.set(false);
+  }
 }
