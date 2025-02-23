@@ -1,0 +1,27 @@
+.character-item {
+  display: flex;
+  align-items: center;
+  transition: background 0.3s ease-in-out;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  &:active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  &__thumbnail {
+    --size: 56px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  &__name {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-left: 12px;
+  }
+}

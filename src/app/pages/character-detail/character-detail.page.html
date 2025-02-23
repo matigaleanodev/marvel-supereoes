@@ -1,41 +1,48 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/character-list" />
     </ion-buttons>
-    <ion-title> {{name()}} </ion-title>
+    <ion-title>{{ name() }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/character-list" />
-      </ion-buttons>
-      <ion-title size="large"> {{name()}} </ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-card>
-    <ion-card-content>
-      @let image = thumbnail();
-      <ion-avatar>
-        <img
-          [src]="image"
-          [alt]="name()"
-          (load)="onLoadImage()"
-          [ngClass]="{ hidden: loadingImage() }"
-        />
-        @if (loadingImage()) {
-        <ion-skeleton-text [animated]="true" /> }
-      </ion-avatar>
+  <ion-row class="detail-card__row">
+    <ion-col
+      size="12"
+      sizeMd="8"
+      sizeLg="6"
+      sizeXl="4"
+      class="detail-card__col"
+    >
+      <ion-card class="detail-card">
+        <ion-card-content>
+          <ion-avatar class="detail-card__avatar">
+            <img
+              class="img"
+              [src]="thumbnail()"
+              [alt]="name()"
+              (load)="onLoadImage()"
+              [ngClass]="{ 'hidden': loadingImage() }"
+            />
+            @if (loadingImage()) {
+            <ion-skeleton-text class="skeleton" [animated]="true" />
+            }
+          </ion-avatar>
 
-      @for (item of characterDetails(); track $index) {
-      <ion-item>
-        <ion-label> {{ item.name | translate }} </ion-label>
-        <ion-badge> {{ item.count }} </ion-badge>
-      </ion-item>
-      }
-    </ion-card-content>
-  </ion-card>
+          @for (item of characterDetails(); track $index) {
+          <ion-item class="detail-card__item">
+            <ion-label class="detail-card__label">
+              {{ item.name | translate }}
+            </ion-label>
+            <ion-badge class="detail-card__badge" color="tertiary">
+              {{ item.count }}
+            </ion-badge>
+          </ion-item>
+          }
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>

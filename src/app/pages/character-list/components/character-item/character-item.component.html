@@ -1,8 +1,13 @@
-<ion-item [button]="true" (click)="selectCharacter(character())">
-  <ion-thumbnail>
+<ion-item
+  class="character-item"
+  lines="full"
+  [button]="true"
+  (click)="selectCharacter(character())"
+>
+  <ion-thumbnail class="character-item__thumbnail">
     <img [src]="thumbnail()" [alt]="name()" />
   </ion-thumbnail>
-  <ion-label class="ion-margin-start">
+  <ion-label class="character-item__name">
     {{ name() }}
   </ion-label>
 </ion-item>

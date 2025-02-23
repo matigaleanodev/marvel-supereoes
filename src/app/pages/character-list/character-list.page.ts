@@ -8,6 +8,8 @@ import {
   IonToolbar,
   LoadingController,
   IonList,
+  IonCard,
+  IonCardContent,
 } from '@ionic/angular/standalone';
 import { MarvelService } from '@shared/services/marvel/marvel.service';
 import { ChallengeParam } from '@shared/models/marvel-query-params.model';
@@ -22,6 +24,8 @@ import { TranslateService } from '@shared/services/translate/translate.service';
   styleUrls: ['./character-list.page.scss'],
   standalone: true,
   imports: [
+    IonCardContent,
+    IonCard,
     IonList,
     IonContent,
     IonHeader,

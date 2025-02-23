@@ -1,12 +1,21 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title> {{ 'xListaPersonajes' | translate }} </ion-title>
   </ion-toolbar>
 </ion-header>
+
+@let list = characters();
+
 <ion-content>
-  <ion-list>
-    @for (character of characters(); track $index) {
-    <app-character-item [character]="character" />
-    }
-  </ion-list>
+  @if (list.length > 0) {
+  <ion-card class="character-list">
+    <ion-card-content class="character-list__content">
+      <ion-list class="character-list__list">
+        @for (character of list; track $index) {
+        <app-character-item class="character-item" [character]="character" />
+        }
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  }
 </ion-content>

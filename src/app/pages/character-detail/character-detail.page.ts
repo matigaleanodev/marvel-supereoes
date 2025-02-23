@@ -23,6 +23,8 @@ import {
   NavController,
   IonSpinner,
   IonSkeletonText,
+  IonRow,
+  IonCol,
 } from '@ionic/angular/standalone';
 import { CharacterService } from '@shared/services/character/character.service';
 import { ActivatedRoute } from '@angular/router';
@@ -36,6 +38,8 @@ import { TranslatePipe } from '@shared/pipes/translate/translate.pipe';
   styleUrls: ['./character-detail.page.scss'],
   standalone: true,
   imports: [
+    IonCol,
+    IonRow,
     IonSkeletonText,
     IonBackButton,
     IonButtons,
@@ -102,14 +106,17 @@ export class CharacterDetailPage {
     {
       name: 'xComicsDisponibles',
       count: this.comicCount(),
+      color: 'tertiary',
     },
     {
       name: 'xSeriesDisponibles',
       count: this.seriesCount(),
+      color: 'secondary',
     },
     {
       name: 'xStoriesDisponibles',
       count: this.storiesCount(),
+      color: 'primary',
     },
   ]);
 
