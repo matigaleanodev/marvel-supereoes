@@ -13,6 +13,8 @@ import { MarvelService } from '@shared/services/marvel/marvel.service';
 import { ChallengeParam } from '@shared/models/marvel-query-params.model';
 import { CharacterService } from '@shared/services/character/character.service';
 import { CharacterItemComponent } from './components/character-item/character-item.component';
+import { TranslatePipe } from '@shared/pipes/translate/translate.pipe';
+import { TranslateService } from '@shared/services/translate/translate.service';
 
 @Component({
   selector: 'app-character-list',
@@ -28,12 +30,14 @@ import { CharacterItemComponent } from './components/character-item/character-it
     CommonModule,
     FormsModule,
     CharacterItemComponent,
+    TranslatePipe,
   ],
 })
 export class CharacterListPage implements OnInit {
   private _marvel = inject(MarvelService);
   private _character = inject(CharacterService);
   private _loading = inject(LoadingController);
+  private _translate = inject(TranslateService);
 
   readonly characters = computed(() => this._character.characterList());
 
@@ -44,8 +48,9 @@ export class CharacterListPage implements OnInit {
   }
 
   async getCharacters() {
+    const message = `${this._translate.instant('xCargandoDatos')}...`;
     const load = await this._loading.create({
-      message: 'Cargando datos...',
+      message,
     });
     load.present();
     const params: ChallengeParam = { limit: 20 };

@@ -28,6 +28,7 @@ import { CharacterService } from '@shared/services/character/character.service';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { TranslatePipe } from '@shared/pipes/translate/translate.pipe';
 
 @Component({
   selector: 'app-character-detail',
@@ -51,6 +52,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
     CommonModule,
     FormsModule,
     NgClass,
+    TranslatePipe,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -98,15 +100,15 @@ export class CharacterDetailPage {
 
   readonly characterDetails = computed(() => [
     {
-      name: 'xComics',
+      name: 'xComicsDisponibles',
       count: this.comicCount(),
     },
     {
-      name: 'xSeries',
+      name: 'xSeriesDisponibles',
       count: this.seriesCount(),
     },
     {
-      name: 'xStories',
+      name: 'xStoriesDisponibles',
       count: this.storiesCount(),
     },
   ]);

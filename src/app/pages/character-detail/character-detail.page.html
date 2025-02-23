@@ -32,8 +32,8 @@
 
       @for (item of characterDetails(); track $index) {
       <ion-item>
-        <ion-label> {{item.name}} </ion-label>
-        <ion-badge> {{item.count}} </ion-badge>
+        <ion-label> {{ item.name | translate }} </ion-label>
+        <ion-badge> {{ item.count }} </ion-badge>
       </ion-item>
       }
     </ion-card-content>
