@@ -5,13 +5,17 @@ describe('NotFoundPage', () => {
   let component: NotFoundPage;
   let fixture: ComponentFixture<NotFoundPage>;
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [NotFoundPage],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(NotFoundPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('debería crear el componente', () => {
     expect(component).toBeTruthy();
   });
 });

@@ -8,7 +8,7 @@ import { provideRouter } from '@angular/router';
 import { TranslateService } from '@shared/services/translate/translate.service';
 
 describe('CharacterListPage', () => {
-  it('debería crear el componente', async () => {
+  beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CharacterListPage],
       providers: [
@@ -26,12 +26,10 @@ describe('CharacterListPage', () => {
         {
           provide: LoadingController,
           useValue: {
-            create: jasmine
-              .createSpy()
-              .and.returnValue({
-                present: jasmine.createSpy(),
-                dismiss: jasmine.createSpy(),
-              }),
+            create: jasmine.createSpy().and.returnValue({
+              present: jasmine.createSpy(),
+              dismiss: jasmine.createSpy(),
+            }),
           },
         },
         {
@@ -42,7 +40,9 @@ describe('CharacterListPage', () => {
         },
       ],
     }).compileComponents();
+  });
 
+  it('debería crear el componente', () => {
     const fixture = TestBed.createComponent(CharacterListPage);
     const component = fixture.componentInstance;
     expect(component).toBeTruthy();

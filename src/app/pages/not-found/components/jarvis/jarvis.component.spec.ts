@@ -1,16 +1,22 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { JarvisComponent } from './jarvis.component';
-import { provideRouter } from '@angular/router';
+import { ElementRef } from '@angular/core';
 
 describe('JarvisComponent', () => {
-  it('debería crear el componente', async () => {
+  let component: JarvisComponent;
+  let fixture: ComponentFixture<JarvisComponent>;
+
+  beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [JarvisComponent],
-      providers: [provideRouter([])],
     }).compileComponents();
 
-    const fixture = TestBed.createComponent(JarvisComponent);
-    const component = fixture.componentInstance;
+    fixture = TestBed.createComponent(JarvisComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('debería crear el componente', () => {
     expect(component).toBeTruthy();
   });
 });

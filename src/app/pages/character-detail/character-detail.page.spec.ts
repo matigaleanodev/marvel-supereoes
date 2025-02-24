@@ -7,7 +7,7 @@ import { provideRouter } from '@angular/router';
 import { CharacterService } from '@shared/services/character/character.service';
 
 describe('CharacterDetailPage', () => {
-  it('debería crear el componente', async () => {
+  beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CharacterDetailPage],
       providers: [
@@ -23,23 +23,23 @@ describe('CharacterDetailPage', () => {
         {
           provide: CharacterService,
           useValue: {
-            characterList: jasmine
-              .createSpy()
-              .and.returnValue([
-                {
-                  id: 1,
-                  name: 'Spiderman',
-                  comics: { available: 100 },
-                  series: { available: 50 },
-                  stories: { available: 10 },
-                  thumbnail: { path: 'http://example.com', extension: 'jpg' },
-                },
-              ]),
+            characterList: jasmine.createSpy().and.returnValue([
+              {
+                id: 1,
+                name: 'Spiderman',
+                comics: { available: 100 },
+                series: { available: 50 },
+                stories: { available: 10 },
+                thumbnail: { path: 'http://example.com', extension: 'jpg' },
+              },
+            ]),
           },
         },
       ],
     }).compileComponents();
+  });
 
+  it('debería crear el componente', () => {
     const fixture = TestBed.createComponent(CharacterDetailPage);
     const component = fixture.componentInstance;
     expect(component).toBeTruthy();
