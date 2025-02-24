@@ -97,7 +97,7 @@ export class CharacterDetailPage {
     const { path, extension } = char.thumbnail;
     const securePath = path.replace('http://', 'https://');
 
-    return `${securePath}/standard_fantastic.${extension}`;
+    return `${securePath}/detail.${extension}`;
   });
 
   readonly loadingImage = signal(true);

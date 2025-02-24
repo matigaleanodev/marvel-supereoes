@@ -1,0 +1,43 @@
+.not-found {
+  &__col {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__card {
+    margin-top: 1.5rem;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__jarvis {
+    height: 250px;
+    width: 250px;
+    justify-self: center;
+  }
+
+  &__image {
+    width: 250px;
+    margin-bottom: 20px;
+  }
+
+  &__message {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+
+  &__button {
+    --border-radius: 8px;
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-light);
+    min-width: 250px;
+  }
+}

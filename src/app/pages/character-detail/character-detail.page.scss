@@ -1,4 +1,6 @@
 .detail-card {
+  width: 100%;
+  max-width: 532px;
   &__row {
     margin: 0 auto;
   }
@@ -15,15 +17,17 @@
   &__avatar {
     display: block;
     margin-bottom: 16px;
-    height: 250px;
-    width: 250px;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1 / 1;
+    height: auto;
     --border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: var(--ion-color-secondary) 2px solid;
 
     .skeleton {
       height: 100%;
-      width: 100%;
+      min-width: 100%;
     }
 
     .img {

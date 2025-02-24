@@ -1,19 +1,35 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/character-list" />
     </ion-buttons>
-    <ion-title>not-found</ion-title>
+    <ion-title>{{ 'xNotFoundTitle' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/character-list" />
-      </ion-buttons>
-      <ion-title size="large">not-found</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="not-found">
+  <ion-row>
+    <ion-col
+      class="not-found__col"
+      size="12"
+      sizeMd="10"
+      sizeLg="8"
+      sizeXl="6"
+      offsetMd="1"
+      offsetLg="2"
+      offsetXl="3"
+    >
+      <ion-card class="not-found__card" color="secondary">
+        <ion-card-content class="not-found__content">
+          <jarvis class="not-found__jarvis" />
+          <h2 class="not-found__message">
+            {{ 'xNotFoundMessage' | translate }}
+          </h2>
+          <ion-button class="not-found__button" (click)="goBack()">
+            {{ 'xVolver' | translate }}
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>

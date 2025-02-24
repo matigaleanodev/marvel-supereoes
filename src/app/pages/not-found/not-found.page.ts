@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
 import {
   IonContent,
   IonHeader,
@@ -8,7 +6,15 @@ import {
   IonToolbar,
   IonButtons,
   IonBackButton,
+  IonButton,
+  IonRow,
+  IonCol,
+  IonCardContent,
+  IonCard,
 } from '@ionic/angular/standalone';
+import { TranslatePipe } from '@shared/pipes/translate/translate.pipe';
+import { NavController } from '@ionic/angular/standalone';
+import { JarvisComponent } from './components/jarvis/jarvis.component';
 
 @Component({
   selector: 'app-not-found',
@@ -16,18 +22,25 @@ import {
   styleUrls: ['./not-found.page.scss'],
   standalone: true,
   imports: [
+    IonCard,
+    IonCardContent,
+    IonCol,
+    IonRow,
+    IonButton,
     IonBackButton,
     IonButtons,
     IonContent,
     IonHeader,
     IonTitle,
     IonToolbar,
-    CommonModule,
-    FormsModule,
+    TranslatePipe,
+    JarvisComponent,
   ],
 })
-export class NotFoundPage implements OnInit {
-  constructor() {}
+export class NotFoundPage {
+  private _nav = inject(NavController);
 
-  ngOnInit() {}
+  goBack() {
+    this._nav.navigateBack('/character-list');
+  }
 }
