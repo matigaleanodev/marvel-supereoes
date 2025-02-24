@@ -1,24 +1,16 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
-
+import { TestBed } from '@angular/core/testing';
 import { CharacterItemComponent } from './character-item.component';
+import { provideRouter } from '@angular/router';
 
 describe('CharacterItemComponent', () => {
-  let component: CharacterItemComponent;
-  let fixture: ComponentFixture<CharacterItemComponent>;
-
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CharacterItemComponent ],
-      imports: [IonicModule.forRoot()]
+  it('debería crear el componente', async () => {
+    await TestBed.configureTestingModule({
+      imports: [CharacterItemComponent],
+      providers: [provideRouter([])],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CharacterItemComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
-
-  it('should create', () => {
+    const fixture = TestBed.createComponent(CharacterItemComponent);
+    const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 });

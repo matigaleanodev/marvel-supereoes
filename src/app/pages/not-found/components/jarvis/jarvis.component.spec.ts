@@ -1,24 +1,16 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
-
+import { TestBed } from '@angular/core/testing';
 import { JarvisComponent } from './jarvis.component';
+import { provideRouter } from '@angular/router';
 
 describe('JarvisComponent', () => {
-  let component: JarvisComponent;
-  let fixture: ComponentFixture<JarvisComponent>;
-
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ JarvisComponent ],
-      imports: [IonicModule.forRoot()]
+  it('debería crear el componente', async () => {
+    await TestBed.configureTestingModule({
+      imports: [JarvisComponent],
+      providers: [provideRouter([])],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(JarvisComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
-
-  it('should create', () => {
+    const fixture = TestBed.createComponent(JarvisComponent);
+    const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 });
