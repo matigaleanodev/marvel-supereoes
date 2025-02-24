@@ -71,3 +71,5 @@ Thumbs.db
 /src/environments/*.ts
 /src/environments
 /android
+firebase.json
+.firebaserc

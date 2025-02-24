@@ -55,7 +55,7 @@ Para ejecutar la app en un dispositivo Android, sigue estos pasos:
 
    ```bash
    ionic build
-   ionic cap add android
+   ionic cap copy android
    ionic cap open android
    ```
 
