@@ -4,4 +4,7 @@ export const esAR = {
   xComicsDisponibles: 'Comics disponibles',
   xSeriesDisponibles: 'Series disponibles',
   xStoriesDisponibles: 'Historias disponibles',
+  xNotFoundTitle: 'No se encontraron resultados',
+  xNotFoundMessage: 'No se encontraron resultados para la búsqueda',
+  xVolver: 'Volver',
 };

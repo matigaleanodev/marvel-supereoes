@@ -1,11 +1,10 @@
-<div class="jarvis">
+<div class="jarvis" #jarvisLike>
   <svg width="210" height="210" id="jarvis-like">
     <defs>
       <filter id="light-circle">
         <feGaussianBlur result="blurred" in="SourceGraphic" stdDeviation="1" />
       </filter>
     </defs>
-    <!-- circle outer -->
     <circle
       cx="105"
       cy="105"
@@ -23,7 +22,6 @@
       r="95"
       style="fill: transparent; stroke: #64e6ef; stroke-width: 1.5"
     ></circle>
-    <!-- circle dash cool :D -->
     <circle
       cx="105"
       cy="105"
@@ -67,7 +65,6 @@
         repeatCount="indefinite"
       />
     </circle>
-    <!-- circle inner -->
     <circle
       cx="105"
       cy="105"
@@ -85,7 +82,6 @@
       r="40"
       style="fill: transparent; stroke: #64e6ef; stroke-width: 2"
     ></circle>
-    <!-- triangle primary -->
     <path
       d="M 105 120 L 130 95 L 80 95 z"
       style="fill: #d1fbfc; stroke: #b4f6fb; stroke-width: 5"

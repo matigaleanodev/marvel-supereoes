@@ -14,6 +14,7 @@ import {
 } from '@ionic/angular/standalone';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 registerLocaleData(localeEn, 'en');
 registerLocaleData(localeEs, 'es');
@@ -24,5 +25,6 @@ export const AppConfig: ApplicationConfig = {
     provideIonicAngular(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
     provideHttpClient(),
+    provideAnimations(),
   ],
 };
