@@ -20,7 +20,7 @@
     "@angular/fire": "^20.0.1",
     "@angular/forms": "^21.0.8",
     "@angular/platform-browser": "^21.0.8",
-    "@angular/platform-browser-dynamic": "^20.2.1",
+    "@angular/platform-browser-dynamic": "^21.0.8",
     "@angular/router": "^20.2.1",
     "@capacitor/android": "7.4.3",
     "@capacitor/app": "7.0.2",
